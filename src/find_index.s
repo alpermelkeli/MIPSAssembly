@@ -11,11 +11,13 @@ main: addi $sp, $sp, -4
  
       sw $ra, 0($sp)
       
-      addi $a0, $0, 0 # load element to argument register       
+      addi $a0, $0, 3 # load element to argument register       
       
       addi $s0, $0, 7 	 # s0 = size
 
       la $s1, array	 # s1 = base adress of array
+
+      addi $t0, $0, 0 	 # it will be counter
 
       jal find_position
 
@@ -30,9 +32,6 @@ main: addi $sp, $sp, -4
 
 find_position:
  
-	addi $t0, $0, 0 #t0 = 0 -> it will be counter
-               
-loop:
 	beq $t0, $s0, not_found
 	
 	sll $t1, $t0, 2 	#t1 = counter * 4 -> it will use to calculate the current address 
@@ -45,7 +44,7 @@ loop:
 	
 	addi $t0, $t0, 1
 
-	j loop
+	j find_position
 
 found: 
 	add $v0, $0, $t0 # return count 
