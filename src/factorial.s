@@ -39,7 +39,7 @@ factorial:
 else:      
 	   addi $a0, $a0, -1  # n = n - 1
 
-           jal  factorial     # recursive call
+           jal  factorial     # recursive call this jal command will change $ra with nextline: lw $ra 0($sp) so this function will resume here after nested calls.
 
            lw   $ra, 0($sp)   # restore $ra
 
