@@ -6,6 +6,7 @@ val2:   .word 20
         .globl main
 
 main:
+	#val1 and val2 stores the adress of data
         la   $a0, val1
         la   $a1, val2
 
